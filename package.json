@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "material-ui": "^0.18.4",
+    "ramda": "^0.24.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.1",

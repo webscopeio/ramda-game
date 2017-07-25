@@ -9,16 +9,14 @@ class UserInput extends Component {
       "dissoc('apples')",
       "map(R.assoc('apples', true)),"
     ],
-    searchText: '',
   }
 
-  handleUpdateInput = (searchText) => {
-    this.setState({
-      searchText: searchText,
-    });
-  }
 
   render() {
+    const {
+      handleUpdateInput,
+      searchText,
+    } = this.props
     return (
       <Paper className='paper-wrapper' zDepth={1} >
         <h1>Your function:</h1>
@@ -30,9 +28,10 @@ class UserInput extends Component {
           <br />
           <div className='margin-left__30'>
             R.<AutoComplete
-                onUpdateInput={this.handleUpdateInput}
+                onUpdateInput={handleUpdateInput}
                 hintText='Start typing function name'
-                searchText={this.state.searchText}
+                searchText={searchText}
+                filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
                 dataSource={this.state.dataSource}
                 openOnFocus={true}
           />
