@@ -1,24 +1,50 @@
 import React, { Component } from 'react';
-import { Paper } from 'material-ui'
-import UserInput from '../UserInput'
-import Result from '../Result'
+import ResultColumn from '../ResultColumn'
+import UserInputColumn from '../UserInputColumn'
+import LeftColumn from '../LeftColumn'
+
+const secondLevel = {
+  apples: false,
+  pineapples: true,
+  pear: false,
+}
+
+const secondLevelResult = {
+  apples: true,
+  pineapples: true,
+  pear: false,
+}
+
 
 class Second extends Component {
+  state = {
+    searchText: '',
+  }
+
+  handleUpdateInput = (searchText) => {
+    this.setState({
+      searchText: searchText,
+    });
+  }
   render() {
+    const {
+      searchText,
+    } = this.state
     return (
-    <div className='display-flex'>
-      <div className='left-column'>
-        <Paper className='paper-wrapper' zDepth={1} >
-          <h1>Second</h1>
-        </Paper>
+      <div className='display-flex'>
+        <LeftColumn
+          level={secondLevel}
+          title='Second level' />
+        <UserInputColumn
+          searchText={searchText}
+          handleUpdateInput={this.handleUpdateInput}
+        />
+        <ResultColumn
+          level={secondLevel}
+          resultLevel={secondLevelResult}
+          searchText={searchText}
+        />
       </div>
-      <div className='middle-column'>
-        <UserInput />
-      </div>
-      <div className='right-column'>
-        <Result />
-      </div>
-    </div>
     )
   }
 }
