@@ -8,13 +8,13 @@ const getFunction = ({ R, level, searchText }) => eval('R.' + searchText + '(lev
 class ResultColumn extends Component {
   render() {
     const {
-      level,
+      levelAssignment,
       resultLevel,
       searchText,
     } = this.props
     let currentAnswer
     try {
-      currentAnswer = getFunction({R, level: level, searchText})
+      currentAnswer = getFunction({R, level: levelAssignment, searchText})
     } catch (err) {}
     const isEqual = typeof currentAnswer === 'object'
       ? R.equals(currentAnswer, resultLevel)

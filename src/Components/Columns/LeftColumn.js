@@ -7,6 +7,7 @@ class LeftColumn extends Component {
     const {
       levelAssignment,
       title,
+      guide,
     } = this.props
     return (
       <div className='left-column'>
@@ -14,6 +15,14 @@ class LeftColumn extends Component {
           <h1>{title}</h1>
           {
             prettify(levelAssignment)
+          }
+          <br />
+          <br />
+          { guide &&
+            <div>
+              <hr />
+              {guide}
+            </div>
           }
         </Paper>
       </div>

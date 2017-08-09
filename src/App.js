@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Drawer, MenuItem, MuiThemeProvider, RaisedButton } from 'material-ui'
 import Level from './Components/Level'
-import Levels from './Constants/Levels.json'
+import Levels from './Constants/Levels'
 
 class App extends Component {
   constructor(props) {
@@ -25,6 +25,11 @@ class App extends Component {
   }
 
   render() {
+    const {
+      level,
+      open,
+    } = this.state
+
     return (
       <MuiThemeProvider>
         <div>
@@ -36,12 +41,12 @@ class App extends Component {
             <Drawer
               docked={false}
               width={200}
-              open={this.state.open}
+              open={open}
               onRequestChange={(open) => this.setState({open})} >
               {Object.keys(Levels).map(key => <MenuItem onTouchTap={() => this.changeLevel(key)}><span>{parseInt(key, 10) + 1}. level</span></MenuItem>)}
             </Drawer>
           </div>
-          <Level id={this.state.level} level={Levels[this.state.level]} />
+          <Level id={level} level={Levels[level]} />
         </div>
       </MuiThemeProvider>
     );

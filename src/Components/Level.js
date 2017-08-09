@@ -31,12 +31,16 @@ class Level extends Component {
         resultOfLevel,
         dataSource,
         hints,
+        getUserInput,
+        guide,
       },
     } = this.props
+
     return (
       <div className='display-flex'>
         <LeftColumn
           levelAssignment={levelAssignment}
+          guide={guide}
           title={title}
         />
         <UserInputColumn
@@ -44,9 +48,10 @@ class Level extends Component {
           handleUpdateInput={this.handleUpdateInput}
           dataSource={dataSource}
           hints={hints}
+          getUserInput={getUserInput}
         />
         <ResultColumn
-          level={levelAssignment}
+          levelAssignment={levelAssignment}
           resultLevel={resultOfLevel}
           searchText={searchText}
         />

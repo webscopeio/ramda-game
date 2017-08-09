@@ -13,30 +13,21 @@ class UserInputColumn extends Component {
       searchText,
       dataSource,
       hints,
+      getUserInput,
     } = this.props
+    const autoComplete = <AutoComplete
+      onUpdateInput={handleUpdateInput}
+      hintText='Start typing function name'
+      searchText={searchText}
+      filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
+      dataSource={dataSource || []}
+      openOnFocus={true}
+    />
     return (
       <div className='middle-column'>
         <Paper className='paper-wrapper' zDepth={1} >
           <h1>Your function:</h1>
-          <span>
-          </span>
-          <br />
-          <span>
-            R.compose(
-            <br />
-            <div className='margin-left__30'>
-              R.<AutoComplete
-                  onUpdateInput={handleUpdateInput}
-                  hintText='Start typing function name'
-                  searchText={searchText}
-                  filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
-                  dataSource={dataSource || []}
-                  openOnFocus={true}
-            />
-            </div>
-            <br />
-            )(Object);
-          </span>
+          {getUserInput(autoComplete)}
           <br />
           <br />
           <br />

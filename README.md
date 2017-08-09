@@ -28,4 +28,4 @@ like which functions are recommended, what each of them does and stuff like that
 
 - Oliver Rýdzi
 
-This game is powered by*Webscope.*
+This game is powered by *Webscope.*
