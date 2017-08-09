@@ -46,7 +46,7 @@ class App extends Component {
               {Object.keys(Levels).map(key => <MenuItem onTouchTap={() => this.changeLevel(key)}><span>{parseInt(key, 10) + 1}. level</span></MenuItem>)}
             </Drawer>
           </div>
-          <Level id={level} level={Levels[level]} />
+          <Level id={level} level={Levels[level]} changeLevel={this.changeLevel} />
         </div>
       </MuiThemeProvider>
     );

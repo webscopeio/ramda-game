@@ -11,6 +11,8 @@ class ResultColumn extends Component {
       levelAssignment,
       resultLevel,
       searchText,
+      changeLevel,
+      id,
     } = this.props
     let currentAnswer
     try {
@@ -41,10 +43,11 @@ class ResultColumn extends Component {
             </div>
             {
               isEqual
-                ? <h2 style={{color: 'green'}}>{correct} Correct!</h2>
+                ? <h2 onClick={() => changeLevel(id + 1)} style={{color: 'green'}}>{correct} Correct!</h2>
                 : <h2 style={{color: 'red'}}>{failed} Incorrect :-(</h2>
             }
           </div>
+          {/*{isEqual && <hchangeLevel(id + 1)}*/}
         </Paper>
       </div>
     )

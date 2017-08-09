@@ -24,7 +24,9 @@ class Level extends Component {
     const {
       searchText,
     } = this.state
+    debugger
     const {
+      id,
       level: {
         levelAssignment,
         title,
@@ -34,6 +36,7 @@ class Level extends Component {
         getUserInput,
         guide,
       },
+      changeLevel,
     } = this.props
 
     return (
@@ -54,6 +57,8 @@ class Level extends Component {
           levelAssignment={levelAssignment}
           resultLevel={resultOfLevel}
           searchText={searchText}
+          changeLevel={changeLevel}
+          id={id}
         />
       </div>
     )

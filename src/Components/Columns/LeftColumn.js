@@ -21,6 +21,9 @@ class LeftColumn extends Component {
           { guide &&
             <div>
               <hr />
+              <br />
+              <br />
+              <h3>Guide to R.assoc - </h3>
               {guide}
             </div>
           }
