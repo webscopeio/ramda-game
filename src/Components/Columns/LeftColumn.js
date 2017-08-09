@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Paper } from 'material-ui'
-import { prettify } from '../Helpers/index'
+import { prettify } from '../../Helpers/index'
 
 class LeftColumn extends Component {
   render() {

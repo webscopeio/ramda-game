@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import ResultColumn from './ResultColumn'
-import UserInputColumn from './UserInputColumn'
-import LeftColumn from './LeftColumn'
-import Levels from '../Constants/Levels.json'
+import ResultColumn from './Columns/ResultColumn'
+import UserInputColumn from './Columns/UserInputColumn'
+import LeftColumn from './Columns/LeftColumn'
 
 class Level extends Component {
   state = {
@@ -15,12 +14,17 @@ class Level extends Component {
     });
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.id !== this.props.id) {
+      this.handleUpdateInput('')
+    }
+  }
+
   render() {
     const {
       searchText,
     } = this.state
     const {
-      id,
       level: {
         levelAssignment,
         title,
@@ -29,9 +33,6 @@ class Level extends Component {
         hints,
       },
     } = this.props
-    if (id === null || id === undefined) {
-      return <h1>We were unable to load this level. Select another.</h1>
-    }
     return (
       <div className='display-flex'>
         <LeftColumn

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import UserInput from './UserInputColumn'
-import Result from './ResultColumn'
+import UserInput from './Columns/UserInputColumn'
+import Result from './Columns/ResultColumn'
 import { Paper } from 'material-ui'
 
 class Home extends Component {
