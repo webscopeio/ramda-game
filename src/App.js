@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 import { Drawer, MenuItem, MuiThemeProvider, RaisedButton } from 'material-ui'
-import First from './Components/Levels/First'
-import Second from './Components/Levels/Second'
-import Third from './Components/Levels/Third'
+import Level from './Components/Level'
+import Levels from './Constants/Levels.json'
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 0,
+      level: 0,
       open: false,
     }
   }
 
   handleToggle = () => this.setState({open: !this.state.open})
 
-  handleClose = () => this.setState({open: false})
+  changeLevel = (level) => this.setState({
+    open: false,
+    level: level,
+  })
 
   handleChange = value => {
     this.setState({value})
@@ -25,37 +26,24 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <MuiThemeProvider>
+      <MuiThemeProvider>
+        <div>
           <div>
-            <div>
-              <RaisedButton
-                label="Levels"
-                onTouchTap={this.handleToggle}
-              />
-              <Drawer
-                docked={false}
-                width={200}
-                open={this.state.open}
-                onRequestChange={(open) => this.setState({open})} >
-                <MenuItem onTouchTap={this.handleClose}><Link to="/first" className='menu-link'>First level </Link></MenuItem>
-                <MenuItem onTouchTap={this.handleClose}><Link to="/second" className='menu-link'>Second level </Link></MenuItem>
-                <MenuItem onTouchTap={this.handleClose}><Link to="/third" className='menu-link'>Third level </Link></MenuItem>
-                <MenuItem onTouchTap={this.handleClose}><Link to="/forth" className='menu-link'>Forth level </Link></MenuItem>
-                <MenuItem onTouchTap={this.handleClose}><Link to="/fifth" className='menu-link'>Fifth level </Link></MenuItem>
-                <MenuItem onTouchTap={this.handleClose}><Link to="/sixth" className='menu-link'>Sixth level </Link></MenuItem>
-                <MenuItem onTouchTap={this.handleClose}><Link to="/seventh" className='menu-link'>Seventh level </Link></MenuItem>
-              </Drawer>
-            </div>
-            <div>
-                <Route exact path="/" component={First}/>
-                <Route path="/first" component={First}/>
-                <Route path="/second" component={Second}/>
-                <Route path="/third" component={Third}/>
-            </div>
+            <RaisedButton
+              label="Levels"
+              onTouchTap={this.handleToggle}
+            />
+            <Drawer
+              docked={false}
+              width={200}
+              open={this.state.open}
+              onRequestChange={(open) => this.setState({open})} >
+              {Object.keys(Levels).map(key => <MenuItem onTouchTap={() => this.changeLevel(key)}><span>{parseInt(key, 10) + 1}. level</span></MenuItem>)}
+            </Drawer>
           </div>
-        </MuiThemeProvider>
-      </Router>
+          <Level id={this.state.level} level={Levels[this.state.level]} />
+        </div>
+      </MuiThemeProvider>
     );
   }
 }

@@ -4,11 +4,6 @@ import { AutoComplete, Paper } from 'material-ui'
 class UserInputColumn extends Component {
   state = {
     value: 1,
-    dataSource: [
-      "assoc('apples', true)",
-      "dissoc('apples')",
-      "map(R.assoc('apples', true)),"
-    ],
   }
 
 
@@ -16,6 +11,8 @@ class UserInputColumn extends Component {
     const {
       handleUpdateInput,
       searchText,
+      dataSource,
+      hints,
     } = this.props
     return (
       <div className='middle-column'>
@@ -33,13 +30,24 @@ class UserInputColumn extends Component {
                   hintText='Start typing function name'
                   searchText={searchText}
                   filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
-                  dataSource={this.state.dataSource}
+                  dataSource={dataSource || []}
                   openOnFocus={true}
             />
             </div>
             <br />
             )(Object);
           </span>
+          <br />
+          <br />
+          <br />
+          {hints && <h3>Tips:</h3>}
+          {hints && hints.map(hint => {
+            return (
+              <div style={{ color: 'green' }}>
+                <span>{hint}</span><br />
+              </div>
+            )
+          })}
         </Paper>
       </div>
     )

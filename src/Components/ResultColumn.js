@@ -17,7 +17,7 @@ class ResultColumn extends Component {
       currentAnswer = getFunction({R, level: level, searchText})
     } catch (err) {}
     const isEqual = typeof currentAnswer === 'object'
-      ? JSON.stringify(currentAnswer) === JSON.stringify(resultLevel)
+      ? R.equals(currentAnswer, resultLevel)
       : false
     const correct = '\u2713'
     const failed = '\u2717'

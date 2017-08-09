@@ -5,7 +5,7 @@ import { prettify } from '../Helpers/index'
 class LeftColumn extends Component {
   render() {
     const {
-      level,
+      levelAssignment,
       title,
     } = this.props
     return (
@@ -13,7 +13,7 @@ class LeftColumn extends Component {
         <Paper className='paper-wrapper' zDepth={1} >
           <h1>{title}</h1>
           {
-            prettify(level)
+            prettify(levelAssignment)
           }
         </Paper>
       </div>
