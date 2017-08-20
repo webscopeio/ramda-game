@@ -71,7 +71,7 @@ class Level extends Component {
         <ResultColumn
           levelAssignment={levelAssignment}
           resultLevel={resultOfLevel}
-          searchText={searchText}
+          searchText={[searchText]}
           changeLevel={changeLevel}
           id={id}
           isNextLevel={isNextLevel}
