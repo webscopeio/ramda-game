@@ -55,7 +55,7 @@ class ResultColumn extends Component {
                 </span>
             }
             {
-              isEqual && isNextLevel && <RaisedButton label="Next level" onClick={nextLevel} disabled={!isNextLevel} />
+              isNextLevel && <RaisedButton label="Next level" onClick={nextLevel} disabled={!isEqual} />
             }
           </div>
         </Paper>
