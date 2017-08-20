@@ -23,7 +23,7 @@ class Home extends Component {
     const {
       isIntroduced,
     } = this.state
-    return !isIntroduced
+    return isIntroduced
       ? (
         <div>
           <RaisedButton
@@ -51,7 +51,7 @@ class Home extends Component {
             where you will <i>compose</i> functions together. In even levels, you will practise concept that was explained
             in previous level.</p>
             <div className='display-flex'>
-              <RaisedButton label='Start learning' onClick={this.onClickHandler} />
+              <RaisedButton label='Start learning' onTouchTap={this.onClickHandler} />
             </div>
           </Paper>
         </div>

@@ -28,36 +28,35 @@ class ResultColumn extends Component {
     return (
       <div className='right-column'>
         <Paper className='paper-wrapper' zDepth={1} >
-          <div className='display-flex-column'>
-            <div>
-              <h1>Result</h1>
-              {
-                typeof currentAnswer === 'object'
-                  ? prettify(currentAnswer)
-                  : '{ }'
-              }
-            </div>
-            <div>
-              <h1>Desired result</h1>
-              {
-                prettify(resultLevel)
-              }
-            </div>
-            {
-              isEqual
-                ? <h2 onClick={() => changeLevel(id + 1)} className='color__green'>{correct} Correct!</h2>
-                : <h2 className='color__red'>{failed} Incorrect :-(</h2>
-            }
-            {
-              !isNextLevel && isEqual &&
-                <span className='color__green'>
-                  You reached and solved the last level. Congratulations!
-                </span>
-            }
-            {
-              isNextLevel && <RaisedButton label="Next level" onClick={nextLevel} disabled={!isEqual} />
-            }
-          </div>
+          <h2>Result</h2>
+          {
+            prettify(currentAnswer)
+          }
+          <br />
+          <br />
+          <hr />
+          <br />
+          <h2>Desired result</h2>
+          {
+            prettify(resultLevel)
+          }
+          {
+            isEqual
+              ? <h3 onClick={() => changeLevel(id + 1)} className='color__green'>{correct} Correct!</h3>
+              : <h3 className='color__red'>{failed} Incorrect :-(</h3>
+          }
+          {
+            !isNextLevel && isEqual &&
+              <span className='color__green'>
+                You reached and solved the last level. Congratulations!
+              </span>
+          }
+          {
+            isNextLevel &&
+              <div className='display-flex'>
+                <RaisedButton label="Next level" onTouchTap={nextLevel} disabled={!isEqual} />
+              </div>
+          }
         </Paper>
       </div>
     )

@@ -24,5 +24,7 @@ function syntaxHighlight(json) {
 }
 
 export function prettify (object) {
-  return output(syntaxHighlight(JSON.stringify(object, undefined, 4)))
+  return typeof object === 'object'
+    ? output(syntaxHighlight(JSON.stringify(object, undefined, 4)))
+    : output('const basket = { \n }')
 }

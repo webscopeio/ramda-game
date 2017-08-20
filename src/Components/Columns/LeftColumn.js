@@ -13,7 +13,7 @@ class LeftColumn extends PureComponent {
     return (
       <div className='left-column'>
         <Paper className='paper-wrapper' zDepth={1} >
-          <h1>{title}</h1>
+          <h2>{title}</h2>
           {
             prettify(levelAssignment)
           }
