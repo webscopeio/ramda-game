@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Paper } from 'material-ui'
 import { prettify } from '../../Helpers/index'
 
-class LeftColumn extends Component {
+class LeftColumn extends PureComponent {
   render() {
     const {
       levelAssignment,
       title,
       guide,
+      levelHeader,
     } = this.props
     return (
       <div className='left-column'>
@@ -23,7 +24,7 @@ class LeftColumn extends Component {
               <hr />
               <br />
               <br />
-              <h3>Guide to R.assoc - </h3>
+              <h3>{levelHeader}</h3>
               {guide}
             </div>
           }

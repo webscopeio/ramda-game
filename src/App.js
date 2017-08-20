@@ -3,6 +3,7 @@ import './App.css';
 import { Drawer, MenuItem, MuiThemeProvider, RaisedButton } from 'material-ui'
 import Level from './Components/Level'
 import Levels from './Constants/Levels'
+import Home from './Components/Home'
 
 class App extends Component {
   constructor(props) {
@@ -17,13 +18,12 @@ class App extends Component {
 
   changeLevel = (level) => this.setState({
     open: false,
-    level: level,
+    level: parseInt(level, 10),
   })
 
-  handleChange = value => {
-    this.setState({value})
+  onNextLevelClick = () => {
+    this.setState({level: this.state.level + 1})
   }
-
   render() {
     const {
       level,
@@ -34,10 +34,6 @@ class App extends Component {
       <MuiThemeProvider>
         <div>
           <div>
-            <RaisedButton
-              label="Levels"
-              onTouchTap={this.handleToggle}
-            />
             <Drawer
               docked={false}
               width={200}
@@ -46,7 +42,14 @@ class App extends Component {
               {Object.keys(Levels).map(key => <MenuItem onTouchTap={() => this.changeLevel(key)}><span>{parseInt(key, 10) + 1}. level</span></MenuItem>)}
             </Drawer>
           </div>
-          <Level id={level} level={Levels[level]} changeLevel={this.changeLevel} />
+          <Home
+            id={level}
+            level={Levels[level]}
+            changeLevel={this.changeLevel}
+            handleToggle={this.handleToggle}
+            isNextLevel={!!Levels[level + 1]}
+            nextLevel={this.onNextLevelClick}
+          />
         </div>
       </MuiThemeProvider>
     );

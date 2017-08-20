@@ -6,6 +6,7 @@ import LeftColumn from './Columns/LeftColumn'
 class Level extends Component {
   state = {
     searchText: '',
+    displaySolution: false
   }
 
   handleUpdateInput = (searchText) => {
@@ -16,15 +17,24 @@ class Level extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.id !== this.props.id) {
-      this.handleUpdateInput('')
+      this.setState({
+        searchText: '',
+        displaySolution: false
+      })
     }
+  }
+
+  onSolutionClickHandler = () => {
+    this.setState({
+      displaySolution: !this.state.displaySolution
+    })
   }
 
   render() {
     const {
       searchText,
+      displaySolution,
     } = this.state
-    debugger
     const {
       id,
       level: {
@@ -32,26 +42,31 @@ class Level extends Component {
         title,
         resultOfLevel,
         dataSource,
-        hints,
+        solution,
         getUserInput,
+        levelHeader,
         guide,
       },
+      nextLevel,
+      isNextLevel,
       changeLevel,
     } = this.props
-
     return (
       <div className='display-flex'>
         <LeftColumn
           levelAssignment={levelAssignment}
           guide={guide}
           title={title}
+          levelHeader={levelHeader}
         />
         <UserInputColumn
           searchText={searchText}
           handleUpdateInput={this.handleUpdateInput}
           dataSource={dataSource}
-          hints={hints}
+          solution={solution}
           getUserInput={getUserInput}
+          onSolutionClickHandler={this.onSolutionClickHandler}
+          displaySolution={displaySolution}
         />
         <ResultColumn
           levelAssignment={levelAssignment}
@@ -59,6 +74,8 @@ class Level extends Component {
           searchText={searchText}
           changeLevel={changeLevel}
           id={id}
+          isNextLevel={isNextLevel}
+          nextLevel={nextLevel}
         />
       </div>
     )

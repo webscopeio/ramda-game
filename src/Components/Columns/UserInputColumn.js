@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 import { AutoComplete, Paper } from 'material-ui'
 
 class UserInputColumn extends Component {
-  state = {
-    value: 1,
-  }
-
-
   render() {
     const {
       handleUpdateInput,
       searchText,
       dataSource,
-      hints,
+      solution,
+      displaySolution,
+      onSolutionClickHandler,
       getUserInput,
     } = this.props
     const autoComplete = <AutoComplete
@@ -31,14 +28,16 @@ class UserInputColumn extends Component {
           <br />
           <br />
           <br />
-          {hints && <h3>Tips:</h3>}
-          {hints && hints.map(hint => {
-            return (
-              <div style={{ color: 'green' }}>
-                <span>{hint}</span><br />
+          {solution && !displaySolution && <h4 className='solution__header' onClick={onSolutionClickHandler}>Click here to show the solution</h4>}
+          {solution && displaySolution && (
+              <div>
+                <h4 className='solution__header' onClick={onSolutionClickHandler}>Click here to hide the solution</h4>
+                <span className='color__green'>
+                  {solution}
+                </span>
               </div>
             )
-          })}
+          }
         </Paper>
       </div>
     )

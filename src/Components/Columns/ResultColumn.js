@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Paper } from 'material-ui'
+import { Paper, RaisedButton } from 'material-ui'
 import { prettify } from '../../Helpers/index'
 import R from 'ramda'
 
@@ -13,6 +13,8 @@ class ResultColumn extends Component {
       searchText,
       changeLevel,
       id,
+      isNextLevel,
+      nextLevel,
     } = this.props
     let currentAnswer
     try {
@@ -43,11 +45,19 @@ class ResultColumn extends Component {
             </div>
             {
               isEqual
-                ? <h2 onClick={() => changeLevel(id + 1)} style={{color: 'green'}}>{correct} Correct!</h2>
-                : <h2 style={{color: 'red'}}>{failed} Incorrect :-(</h2>
+                ? <h2 onClick={() => changeLevel(id + 1)} className='color__green'>{correct} Correct!</h2>
+                : <h2 className='color__red'>{failed} Incorrect :-(</h2>
+            }
+            {
+              !isNextLevel && isEqual &&
+                <span className='color__green'>
+                  You reached and solved the last level. Congratulations!
+                </span>
+            }
+            {
+              isEqual && isNextLevel && <RaisedButton label="Next level" onClick={nextLevel} disabled={!isNextLevel} />
             }
           </div>
-          {/*{isEqual && <hchangeLevel(id + 1)}*/}
         </Paper>
       </div>
     )
