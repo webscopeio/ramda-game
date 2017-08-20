@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { AutoComplete, Paper } from 'material-ui'
+import { ramdaFunctions } from '../../Constants/RamdaFunctions'
 
 class UserInputColumn extends Component {
+  handleNewRequest = () => {
+    this.autoCompleteInput.focus()
+  }
   render() {
     const {
       handleUpdateInput,
@@ -17,8 +21,11 @@ class UserInputColumn extends Component {
       hintText='Start typing function name'
       searchText={searchText}
       filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
-      dataSource={dataSource || []}
+      dataSource={dataSource || ramdaFunctions}
+      maxSearchResults={3}
       openOnFocus={true}
+      onNewRequest={this.handleNewRequest}
+      ref={(input) => { this.autoCompleteInput = input; }}
     />
     return (
       <div className='middle-column'>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Drawer, MenuItem, MuiThemeProvider, RaisedButton } from 'material-ui'
-import Level from './Components/Level'
+import { Drawer, MenuItem, MuiThemeProvider } from 'material-ui'
 import Levels from './Constants/Levels'
 import Home from './Components/Home'
 

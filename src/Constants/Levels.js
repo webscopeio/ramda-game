@@ -24,7 +24,7 @@ const levels ={
     getUserInput: (complete) =>
       <div>
         R.{complete}(basket)
-      </div>
+      </div>,
   },
   1: {
     "title": "Make sure pears are in the basket",

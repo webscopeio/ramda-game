@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import UserInput from './Columns/UserInputColumn'
-import Result from './Columns/ResultColumn'
 import { Paper, RaisedButton } from 'material-ui'
 import Level from './Level'
 
@@ -25,7 +23,7 @@ class Home extends Component {
     const {
       isIntroduced,
     } = this.state
-    return isIntroduced
+    return !isIntroduced
       ? (
         <div>
           <RaisedButton
