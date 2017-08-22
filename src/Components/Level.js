@@ -4,21 +4,38 @@ import UserInputColumn from './Columns/UserInputColumn'
 import LeftColumn from './Columns/LeftColumn'
 
 class Level extends Component {
-  state = {
-    searchText: '',
-    displaySolution: false
+
+  constructor (props) {
+    super(props)
+    let searchTexts = []
+    for (let i = 0; i < props.level.getUserInput.length; i++) {
+      searchTexts.push('')
+    }
+    this.state = {
+      searchTexts,
+      displaySolution: false
+    }
   }
 
-  handleUpdateInput = (searchText) => {
-    this.setState({
-      searchText: searchText,
-    });
+  handleUpdateInput = (index, searchText) => {
+    let {
+      searchTexts
+    } = this.state
+    searchTexts[index] = searchText
+    return this.setState({
+      searchTexts,
+    })
   }
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.id !== this.props.id) {
+      console.log('nextProps', nextProps)
+      let searchTexts = []
+      for (let i = 0; i < nextProps.level.getUserInput.length; i++) {
+        searchTexts.push('')
+      }
       this.setState({
-        searchText: '',
+        searchTexts,
         displaySolution: false
       })
     }
@@ -32,7 +49,7 @@ class Level extends Component {
 
   render() {
     const {
-      searchText,
+      searchTexts,
       displaySolution,
     } = this.state
     const {
@@ -60,7 +77,7 @@ class Level extends Component {
           levelHeader={levelHeader}
         />
         <UserInputColumn
-          searchText={searchText}
+          searchTexts={searchTexts}
           handleUpdateInput={this.handleUpdateInput}
           dataSource={dataSource}
           solution={solution}
@@ -71,7 +88,7 @@ class Level extends Component {
         <ResultColumn
           levelAssignment={levelAssignment}
           resultLevel={resultOfLevel}
-          searchText={searchText}
+          searchTexts={searchTexts}
           changeLevel={changeLevel}
           id={id}
           isNextLevel={isNextLevel}

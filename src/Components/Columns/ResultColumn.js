@@ -3,23 +3,28 @@ import { Paper, RaisedButton } from 'material-ui'
 import { prettify } from '../../Helpers/index'
 import R from 'ramda'
 
-const getFunction = ({ R, level, searchText }) => eval('R.' + searchText + '(level)')
+const getFunction = ({ R, level, searchText }) => eval('R.' + searchText)
 
 class ResultColumn extends Component {
   render() {
     const {
       levelAssignment,
       resultLevel,
-      searchText,
+      searchTexts,
       changeLevel,
       id,
       isNextLevel,
       nextLevel,
     } = this.props
     let currentAnswer
+    let functionList
     try {
-      currentAnswer = getFunction({R, level: levelAssignment, searchText})
+      functionList = searchTexts.map(text => getFunction({R, level: levelAssignment, searchText: text}))
     } catch (err) {}
+    try {
+      currentAnswer = R.compose(...functionList)(levelAssignment)
+    } catch (err) {
+    }
     const isEqual = typeof currentAnswer === 'object'
       ? R.equals(currentAnswer, resultLevel)
       : false
