@@ -10,20 +10,19 @@ class ResultColumn extends Component {
     const {
       levelAssignment,
       resultLevel,
-      searchText,
+      searchTexts,
       changeLevel,
       id,
       isNextLevel,
       nextLevel,
     } = this.props
-    let currentAnswer = levelAssignment
+    let currentAnswer
     let functionList
-
     try {
-      functionList = searchText.map(text => getFunction({R, level: levelAssignment, searchText: searchText[0]}))
+      functionList = searchTexts.map(text => getFunction({R, level: levelAssignment, searchText: text}))
     } catch (err) {}
     try {
-      R.forEach(func => currentAnswer = func(currentAnswer))(functionList)
+      currentAnswer = R.compose(...functionList)(levelAssignment)
     } catch (err) {
     }
     const isEqual = typeof currentAnswer === 'object'

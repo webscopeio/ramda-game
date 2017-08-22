@@ -1,47 +1,38 @@
 import React, { Component } from 'react';
 import { AutoComplete, Paper, RaisedButton } from 'material-ui'
 import { ramdaFunctions } from '../../Constants/RamdaFunctions'
-const colors = [
-  'Red',
-  'Orange',
-  'Yellow',
-  'Green',
-  'Blue',
-  'Purple',
-  'Black',
-  'White',
-];
 
 class UserInputColumn extends Component {
-  handleNewRequest = () => {
-    this.autoCompleteInput.focus()
+  handleNewRequest = (index) => {
+    this.autoCompleteInput[index].focus()
   }
+  autoCompleteInput = []
   render() {
     const {
       handleUpdateInput,
-      searchText,
+      searchTexts,
       dataSource,
       solution,
       displaySolution,
       onSolutionClickHandler,
       getUserInput,
     } = this.props
-    const autoComplete = <AutoComplete
-      onUpdateInput={handleUpdateInput}
+    const autoComplete = searchTexts.map((text, index) => <AutoComplete
+      onUpdateInput={(text) => handleUpdateInput(index, text)}
       hintText='Start typing function name'
-      searchText={searchText}
+      searchText={text}
       maxSearchResults={3}
       openOnFocus={true}
-      onNewRequest={this.handleNewRequest}
-      ref={(input) => { this.autoCompleteInput = input; }}
-      filter={AutoComplete.caseInsensitiveFilter}
+      onNewRequest={() => this.handleNewRequest(index)}
+      ref={(input) => { this.autoCompleteInput[index] = input; }}
+      filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
       dataSource={dataSource || ramdaFunctions}
-    />
+    />)
     return (
       <div className='middle-column'>
         <Paper className='paper-wrapper' zDepth={1} >
           <h2>Your function:</h2>
-          {getUserInput(autoComplete)}
+          {getUserInput(...autoComplete)}
           <br />
           <br />
           <br />

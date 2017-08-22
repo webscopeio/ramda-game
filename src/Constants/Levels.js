@@ -289,35 +289,36 @@ const levels ={
       </div>,
     solution: "R.omit(['apples', 'pears'])",
   },
-  // "100": {
-  //   "title": "Learn to assoc",
-  //   "levelAssignment": {
-  //     "apples": false,
-  //     "pineapples": true,
-  //     "pears": false
-  //   },
-  //   "resultOfLevel": {
-  //     "apples": true,
-  //     "pineapples": true,
-  //     "pears": false
-  //   },
-  //   getUserInput: (complete) =>
-  //     <div>
-  //         <span>
-  //           R.compose(
-  //           <br />
-  //           <div className='margin-left__30'>
-  //             R.{complete}
-  //           </div>
-  //           <br />
-  //           )(basket);
-  //         </span>
-  //     </div>,
-  //   "solution": [
-  //     "Try to use assoc to throw some apples into the basket",
-  //     "Try using R.assoc('apples',___)"
-  //   ]
-  // },
+  "100": {
+    "title": "Learn to assoc",
+    "levelAssignment": {
+      "apples": false,
+      "pineapples": true,
+      "pears": false
+    },
+    "resultOfLevel": {
+      "apples": true,
+      "pineapples": true,
+      "pears": false
+    },
+    getUserInput: (complete, complete2) =>
+      <div>
+          <span>
+            R.compose(
+            <br />
+            <div className='margin-left__30'>
+              R.{complete}, <br />
+              R.{complete2}
+            </div>
+            <br />
+            )(basket);
+          </span>
+      </div>,
+    "solution": [
+      "Try to use assoc to throw some apples into the basket",
+      "Try using R.assoc('apples',___)"
+    ]
+  },
   // "101": {
   //   "title": "Learn to assoc",
   //   "levelAssignment": {
