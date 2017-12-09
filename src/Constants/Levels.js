@@ -8,6 +8,7 @@ const levels ={
       "pineapples": true,
       "pears": false
     },
+    "name": "R.assoc()",
     "resultOfLevel": {
       "apples": true,
       "pineapples": true,
@@ -27,23 +28,6 @@ const levels ={
       </div>,
   },
   1: {
-    "title": "Make sure pears are in the basket",
-    "levelAssignment": {
-      "apples": true,
-      "pineapples": true,
-    },
-    "resultOfLevel": {
-      "apples": true,
-      "pineapples": true,
-      "pears": true
-    },
-    solution: <span>R.assoc('pears', true)</span>,
-    getUserInput: (complete) =>
-      <div>
-        R.{complete}(basket)
-      </div>
-  },
-  2: {
     "title": "Add some red apples to apples basket",
     "levelAssignment": {
       "apples": {
@@ -52,6 +36,7 @@ const levels ={
       "pineapples": true,
       "pears": false
     },
+    "name": "R.assocPath()",
     "resultOfLevel": {
       "apples": {
         green: true,
@@ -74,37 +59,14 @@ const levels ={
       </div>,
     solution: <span>R.assocPath(['apples', 'red'], true)"</span>,
   },
-  3: {
-    "title": "Set green apples to 'false' apples basket",
-    "levelAssignment": {
-      "apples": {
-        green: true,
-        red: true,
-      },
-      "pineapples": true,
-      "pears": false
-    },
-    "resultOfLevel": {
-      "apples": {
-        green: false,
-        red: true,
-      },
-      "pineapples": true,
-      "pears": false
-    },
-    getUserInput: (complete) =>
-      <div>
-        R.{complete}(basket)
-      </div>,
-    solution: <span>R.assocPath(['apples', 'green'], false)</span>,
-  },
-  4: {
+  2: {
     "title": "Remove apples from basket",
     "levelAssignment": {
       "apples": true,
       "pineapples": true,
       "pears": false
     },
+    "name": "R.dissoc()",
     "resultOfLevel": {
       "pineapples": true,
       "pears": false
@@ -122,20 +84,7 @@ const levels ={
     </span>,
     solution: "R.dissoc('apples')",
   },
-  5: {
-    "title": "Remove pears from basket",
-    "levelAssignment": {
-      "pears": false
-    },
-    "resultOfLevel": {
-    },
-    getUserInput: (complete) =>
-      <div>
-        R.{complete}(basket)
-      </div>,
-    solution: <span>R.dissoc('pears')</span>,
-  },
-  6: {
+  3: {
     "title": "Remove red apples from the basket",
     "levelAssignment": {
       "apples": {
@@ -145,6 +94,7 @@ const levels ={
       "pineapples": true,
       "pears": false
     },
+    "name": "R.dissocPath()",
     "resultOfLevel": {
       "apples": {
         green: true,
@@ -176,40 +126,14 @@ const levels ={
       </div>,
     solution: <span>R.dissocPath(['apples', 'red'])</span>,
   },
-  7: {
-    "title": "Remove green apples from the basket",
-    "levelAssignment": {
-      apples: {
-        color: {
-          green: true,
-          red: true,
-        }
-      },
-      "pineapples": true,
-      "pears": false
-    },
-    "resultOfLevel": {
-      "apples": {
-        color: {
-          red: true,
-        }
-      },
-      "pineapples": true,
-      "pears": false
-    },
-    getUserInput: (complete) =>
-      <div>
-        R.{complete}(basket)
-      </div>,
-    solution: <span>R.dissocPath(['apples', 'color', 'green'])</span>,
-  },
-  8: {
+  4: {
     "title": "Pick just apples from the basket",
     "levelAssignment": {
       "apples": true,
       "pineapples": true,
       "pears": false
     },
+    "name": "R.pick()",
     "resultOfLevel": {
       "apples": true,
     },
@@ -229,30 +153,14 @@ const levels ={
       </div>,
     solution: <span>R.pick(['apples'])</span>,
   },
-  9: {
-    "title": "Pick apples and pears from the basket",
-    "levelAssignment": {
-      "apples": true,
-      "pineapples": false,
-      "pears": true
-    },
-    "resultOfLevel": {
-      "apples": true,
-      pears: true
-    },
-    getUserInput: (complete) =>
-      <div>
-        R.{complete}(basket)
-      </div>,
-    solution: <span>R.pick(['apples', 'pears'])</span>,
-  },
-  10: {
+  5: {
     "title": "Throw away pineapples from the basket",
     "levelAssignment": {
       "apples": true,
       "pineapples": false,
       "pears": true
     },
+    "name": "R.omit()",
     "resultOfLevel": {
       "apples": true,
       "pears": true
@@ -273,23 +181,7 @@ const levels ={
       </div>,
     solution: <span>R.omit(['pineapples'])</span>,
   },
-  11: {
-    "title": "Throw away apples and pears from the basket",
-    "levelAssignment": {
-      "apples": true,
-      "pineapples": true,
-      "pears": false
-    },
-    "resultOfLevel": {
-      "pineapples": true,
-    },
-    getUserInput: (complete) =>
-      <div>
-        R.{complete}(basket)
-      </div>,
-    solution: <span>R.omit(['apples', 'pears'])</span>,
-  },
-  "12": {
+  "6": {
     "title": "Remove pears from the basket and changed apples to true",
     "levelAssignment": {
       "apples": false,
@@ -300,6 +192,7 @@ const levels ={
       "apples": true,
       "pineapples": true,
     },
+    "name": "Composing of functions practise",
     getUserInput: (complete, complete2) =>
       <div>
           <span>
@@ -343,50 +236,6 @@ const levels ={
         or
       </div>
       R.pick(['apples', 'pineapples']) with R.assoc('apples', true)
-    </span>,
-  },
-  "13": {
-    "title": "Select just apples, olives and strawberries. Make sure they are also true.",
-    "levelAssignment": {
-      "apples": true,
-      "pineapples": true,
-      "pears": false,
-      "melons": false,
-      "olives": false,
-      "cherries": false,
-      "cucumbers": false,
-      "strawberries": true,
-      "peaches": false,
-      "plums": false
-    },
-    "resultOfLevel": {
-      "apples": true,
-      "olives": true,
-      "strawberries": true
-    },
-    getUserInput: (complete, complete2) =>
-      <div>
-          <span>
-            R.compose(
-            <br />
-            <div className='margin-left__30'>
-              R.{complete}, <br />
-              R.{complete2}
-            </div>
-            <br />
-            )(basket);
-          </span>
-      </div>,
-    solution: <span>R.pick(['apples', 'olives', 'strawberries']) with R.assoc('olives', true)
-      <div className='color__green display-flex'>
-        or
-      </div>
-      R.assoc('olives', true) with R.pick(['apples', 'strawberries']). Since <i>R.compose</i> performs right to left
-      composition, you have to be sure that R.pick is second argument of R.compose!
-      <div className='color__green display-flex'>
-        or
-      </div>
-      You can also omit each property except apples, olives and strawberries.
     </span>,
   },
   // "102": {

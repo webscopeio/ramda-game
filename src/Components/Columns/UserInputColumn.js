@@ -44,8 +44,8 @@ class UserInputColumn extends Component {
           }
           {solution && displaySolution && (
               <div className='display-flex'>
-                <div>
-                  <RaisedButton label="Click here to hide the solution" onTouchTap={onSolutionClickHandler} />
+                <div className='display-flex display-flex-column'>
+                  <RaisedButton label="Click here to hide the solution" style={{alignSelf: 'center'}} onTouchTap={onSolutionClickHandler} />
                   <div className='color__green display-flex'>
                     {solution}
                   </div>

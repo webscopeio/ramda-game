@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Drawer, MenuItem, MuiThemeProvider } from 'material-ui'
-import Levels from './Constants/Levels'
+import { Divider, Drawer, MenuItem, MuiThemeProvider } from 'material-ui'
+import levels from './Constants/Levels'
 import Home from './Components/Home'
+import R from 'ramda'
+import Cached from 'material-ui/svg-icons/action/cached';
+import practiseLevels from './Constants/PractiseLevels'
 
 class App extends Component {
   constructor(props) {
@@ -10,43 +13,93 @@ class App extends Component {
     this.state = {
       level: 0,
       open: false,
+      isPractise: false,
     }
   }
 
   handleToggle = () => this.setState({open: !this.state.open})
 
-  changeLevel = (level) => this.setState({
+  changeLevel = (level, isPractise = false) => this.setState({
     open: false,
     level: parseInt(level, 10),
+    isPractise,
   })
 
   onNextLevelClick = () => {
-    this.setState({level: this.state.level + 1})
+    this.setState({
+      level: this.state.level + 1,
+      isPractise: false,
+    })
   }
   render() {
     const {
       level,
       open,
+      isPractise,
     } = this.state
-
+    const rightIcon = (key) => <Cached title={'Practise this function!'} onClick={() => this.changeLevel(key, true)}/>
     return (
       <MuiThemeProvider>
         <div>
           <div>
             <Drawer
               docked={false}
-              width={200}
+              width={350}
               open={open}
               onRequestChange={(open) => this.setState({open})} >
-              {Object.keys(Levels).map(key => <MenuItem onTouchTap={() => this.changeLevel(key)}><span>{parseInt(key, 10) + 1}. level</span></MenuItem>)}
+              <span>
+                {Object.values(levels).map((level, key) => {
+                    if (key === 0) {
+                      return (
+                        <div>
+                          <MenuItem>
+                            <span><strong>Working with objects</strong></span>
+                          </MenuItem>
+                          <Divider />
+                          <MenuItem onTouchTap={() => this.changeLevel(key)}
+                                    rightIcon={rightIcon(key)}>
+                            <span>{parseInt(key, 10) + 1}
+                              . {level.name || 'level'}
+                            </span>
+                          </MenuItem>
+                        </div>
+                      )
+                    }
+                    if (key === 6) {
+                      return (
+                        <div>
+                          <Divider />
+                          <MenuItem>
+                            <span><strong>Function composition</strong></span>
+                          </MenuItem>
+                          <Divider />
+                          <MenuItem onTouchTap={() => this.changeLevel(key)}
+                                    rightIcon={rightIcon(key)}>
+                            <span>{parseInt(key, 10) + 1}
+                              . {level.name || 'level'}
+                            </span>
+                          </MenuItem>
+                        </div>
+                      )
+                    }
+
+                    return <MenuItem onTouchTap={() => this.changeLevel(key)}
+                                     rightIcon={rightIcon(key)}>
+                      <span>{parseInt(key, 10) + 1}
+                        . {level.name || 'level'}
+                      </span>
+                    </MenuItem>
+                  }
+                )}
+              </span>
             </Drawer>
           </div>
           <Home
             id={level}
-            level={Levels[level]}
+            level={isPractise ? practiseLevels[level] : levels[level]}
             changeLevel={this.changeLevel}
             handleToggle={this.handleToggle}
-            isNextLevel={!!Levels[level + 1]}
+            isNextLevel={!!levels[level + 1]}
             nextLevel={this.onNextLevelClick}
           />
         </div>

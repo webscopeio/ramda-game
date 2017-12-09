@@ -23,7 +23,7 @@ class Home extends Component {
     const {
       isIntroduced,
     } = this.state
-    return isIntroduced
+    return !isIntroduced
       ? (
         <div>
           <RaisedButton

@@ -32,6 +32,7 @@ export const ramdaFunctions = [
   'isNil()',
   'keys()',
   'last()',
+  'lift()',
   'lt()',
   'lte()',
   'map()',

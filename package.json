@@ -7,6 +7,7 @@
     "ramda": "^0.24.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-overdrive": "^0.0.9",
     "react-tap-event-plugin": "^2.0.1"
   },
   "devDependencies": {

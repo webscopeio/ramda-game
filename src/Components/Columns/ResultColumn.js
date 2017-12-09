@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Paper, RaisedButton } from 'material-ui'
 import { prettify } from '../../Helpers/index'
 import R from 'ramda'
+import Overdrive from 'react-overdrive'
 
 const getFunction = ({ R, level, searchText }) => eval('R.' + searchText)
 
@@ -35,7 +36,9 @@ class ResultColumn extends Component {
         <Paper className='paper-wrapper' zDepth={1} >
           <h2>Result</h2>
           {
-            prettify(currentAnswer)
+            currentAnswer
+              ? <Overdrive id="result-animation" duration={500}>{prettify(currentAnswer)}</Overdrive>
+              : <Overdrive id="result-animation" duration={500}>{prettify(currentAnswer)}</Overdrive>
           }
           <br />
           <br />
@@ -47,8 +50,14 @@ class ResultColumn extends Component {
           }
           {
             isEqual
-              ? <h3 onClick={() => changeLevel(id + 1)} className='color__green'>{correct} Correct!</h3>
-              : <h3 className='color__red'>{failed} Incorrect :-(</h3>
+              ?
+                  <Overdrive id="correct-animation" duration={500}>
+                    <h3 onClick={() => changeLevel(id + 1)} className='color__green'>{correct} Correct!</h3>
+                  </Overdrive>
+              :
+                  <Overdrive id="correct-animation" duration={500}>
+                    <h3 className='color__red'>{failed} Incorrect :-(</h3>
+                  </Overdrive>
           }
           {
             !isNextLevel && isEqual &&
