@@ -121,7 +121,7 @@ const practiseLevels = {
       </div>,
     solution: <span>R.omit(['apples', 'pears'])</span>,
   },
-  "6": {
+  "11": {
     "title": "Select just apples, olives and strawberries. Make sure they are also true.",
     "levelAssignment": {
       "apples": true,

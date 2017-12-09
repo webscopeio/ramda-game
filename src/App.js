@@ -37,7 +37,7 @@ class App extends Component {
       open,
       isPractise,
     } = this.state
-    const rightIcon = (key) => <Cached title={'Practise this function!'} onClick={() => this.changeLevel(key, true)}/>
+    const rightIcon = (key) => !!practiseLevels[key] && <Cached title={'Practise this function!'} onClick={() => this.changeLevel(key, true)}/>
     return (
       <MuiThemeProvider>
         <div>
@@ -49,28 +49,12 @@ class App extends Component {
               onRequestChange={(open) => this.setState({open})} >
               <span>
                 {Object.values(levels).map((level, key) => {
-                    if (key === 0) {
-                      return (
-                        <div>
-                          <MenuItem>
-                            <span><strong>Working with objects</strong></span>
-                          </MenuItem>
-                          <Divider />
-                          <MenuItem onTouchTap={() => this.changeLevel(key)}
-                                    rightIcon={rightIcon(key)}>
-                            <span>{parseInt(key, 10) + 1}
-                              . {level.name || 'level'}
-                            </span>
-                          </MenuItem>
-                        </div>
-                      )
-                    }
-                    if (key === 6) {
+                    if (level.newCategory) {
                       return (
                         <div>
                           <Divider />
                           <MenuItem>
-                            <span><strong>Function composition</strong></span>
+                            <span><strong>{level.newCategory}</strong></span>
                           </MenuItem>
                           <Divider />
                           <MenuItem onTouchTap={() => this.changeLevel(key)}

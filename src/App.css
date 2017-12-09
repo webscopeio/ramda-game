@@ -54,6 +54,7 @@
   width: 100%;
   height: 900px;
   padding: 10px;
+  overflow: auto;
 }
 
 .paper-wrapper__home {

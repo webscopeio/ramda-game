@@ -3,6 +3,7 @@ import { Paper, RaisedButton } from 'material-ui'
 import { prettify } from '../../Helpers/index'
 import R from 'ramda'
 import Overdrive from 'react-overdrive'
+import Cached from 'material-ui/svg-icons/action/cached';
 
 const getFunction = ({ R, level, searchText }) => eval('R.' + searchText)
 
@@ -16,6 +17,7 @@ class ResultColumn extends Component {
       id,
       isNextLevel,
       nextLevel,
+      isPipe,
     } = this.props
     let currentAnswer
     let functionList
@@ -23,10 +25,12 @@ class ResultColumn extends Component {
       functionList = searchTexts.map(text => getFunction({R, level: levelAssignment, searchText: text}))
     } catch (err) {}
     try {
-      currentAnswer = R.compose(...functionList)(levelAssignment)
+      currentAnswer = isPipe
+        ? R.pipe(...functionList)(levelAssignment)
+        : R.compose(...functionList)(levelAssignment)
     } catch (err) {
     }
-    const isEqual = typeof currentAnswer === 'object'
+    const isEqual = currentAnswer
       ? R.equals(currentAnswer, resultLevel)
       : false
     const correct = '\u2713'
@@ -61,14 +65,20 @@ class ResultColumn extends Component {
           }
           {
             !isNextLevel && isEqual &&
-              <span className='color__green'>
-                You reached and solved the last level. Congratulations!
-              </span>
+              <div>
+                <span className='color__green'>
+                  You reached and solved the last level. Congratulations!
+                </span><br /><br />
+                <span>
+                  You can now try to solve practise levels by clicking on <Cached/> button next to the level names,
+                  if you haven't solved them already!
+                </span>
+              </div>
           }
           {
             isNextLevel &&
               <div className='display-flex'>
-                <RaisedButton label="Next level" onTouchTap={nextLevel} disabled={!isEqual} />
+                <RaisedButton label="Next topic" onTouchTap={nextLevel} disabled={!isEqual} />
               </div>
           }
         </Paper>
