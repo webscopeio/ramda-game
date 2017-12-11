@@ -185,7 +185,7 @@ const levels ={
   },
   // Working with arrays
   6: {
-    "title": "Add red melon object at the end of basket",
+    "title": "Add green melon object at the end of basket",
     "levelAssignment": [
       {color: 'red', name: 'Strawberry'},
       {color: 'yellow', name: 'Banana'},
@@ -219,7 +219,7 @@ const levels ={
     </span>,
   },
   7: {
-    "title": "Add red melon object at the beginning of basket",
+    "title": "Add green melon object at the beginning of basket",
     "levelAssignment": [
       {color: 'red', name: 'Strawberry'},
       {color: 'yellow', name: 'Banana'},
