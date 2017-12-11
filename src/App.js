@@ -3,7 +3,6 @@ import './App.css';
 import { Divider, Drawer, MenuItem, MuiThemeProvider } from 'material-ui'
 import levels from './Constants/Levels'
 import Home from './Components/Home'
-import R from 'ramda'
 import Cached from 'material-ui/svg-icons/action/cached';
 import practiseLevels from './Constants/PractiseLevels'
 
