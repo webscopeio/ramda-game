@@ -69,7 +69,7 @@ class Level extends Component {
       changeLevel,
     } = this.props
     return (
-      <div className='display-flex'>
+      <div className='display-flex main-wrapper'>
         <LeftColumn
           levelAssignment={levelAssignment}
           guide={guide}
