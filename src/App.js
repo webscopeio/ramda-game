@@ -43,7 +43,7 @@ class App extends Component {
           <div>
             <Drawer
               docked={false}
-              width={350}
+              width={320}
               open={open}
               onRequestChange={(open) => this.setState({open})} >
               <span>
