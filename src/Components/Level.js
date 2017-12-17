@@ -29,7 +29,6 @@ class Level extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.id !== this.props.id) {
-      console.log('nextProps', nextProps)
       let searchTexts = []
       for (let i = 0; i < nextProps.level.getUserInput.length; i++) {
         searchTexts.push('')

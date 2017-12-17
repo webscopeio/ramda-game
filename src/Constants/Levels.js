@@ -575,35 +575,6 @@ const levels ={
     solution: <span>
       R.prepend({"{color: 'yellow', name: 'Lemons'}"}) with R.groupBy(R.prop('color')) and R.omit('red')
     </span>,
-  },
-  // "102": {
-  //   "title": "Learn to assoc",
-  //   "levelAssignment": {
-  //     "apples": false,
-  //     "pineapples": true,
-  //     "pears": false
-  //   },
-  //   "resultOfLevel": {
-  //     "apples": true,
-  //     "pineapples": true,
-  //     "pears": false
-  //   },
-  //   getUserInput: (complete) =>
-  //     <div>
-  //         <span>
-  //           R.compose(
-  //           <br />
-  //           <div className='margin-left__30'>
-  //             R.{complete}
-  //           </div>
-  //           <br />
-  //           )(basket);
-  //         </span>
-  //     </div>,
-  //   "solution": [
-  //     "Try to use assoc to throw some apples into the basket",
-  //     "Try using R.assoc('apples',___)"
-  //   ]
-  // }
+  }
 }
 export default levels
