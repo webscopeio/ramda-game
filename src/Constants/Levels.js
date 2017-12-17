@@ -16,7 +16,7 @@ const levels ={
       "pineapples": true,
       "pears": false
     },
-    levelHeader: 'Guide to R.assoc - ',
+    levelHeader: 'Guide to R.assoc: ',
     guide: <span>
       You can use R.assoc(<i>property</i>, <i>value</i>, <i>object</i>) to set object property to desired value.
       <br /><br />
@@ -47,7 +47,7 @@ const levels ={
       "pineapples": true,
       "pears": false
     },
-    levelHeader: 'Guide to R.assocPath - ',
+    levelHeader: 'Guide to R.assocPath: ',
     guide: <span>
       You can use R.assocPath(<i>list of properties</i>, <i>value</i>, <i>object</i>) to set object property, even if
       you need it needs to be nested.
@@ -77,7 +77,7 @@ const levels ={
       <div>
         R.{complete}(basket)
       </div>,
-    levelHeader: 'Guide to R.dissoc - ',
+    levelHeader: 'Guide to R.dissoc: ',
     guide: <span>
       You can use R.dissoc(<i>property</i>, <i>object</i>) to remove object's property.
       <br /><br />
@@ -104,7 +104,7 @@ const levels ={
       "pineapples": true,
       "pears": false
     },
-    levelHeader: 'Guide to R.dissocPath - ',
+    levelHeader: 'Guide to R.dissocPath: ',
     guide: <span>
       You can use R.dissocPath(<i>list of properties</i>, <i>object</i>) to remove object's nested property.
       <br /><br />
@@ -139,7 +139,7 @@ const levels ={
     "resultOfLevel": {
       "apples": true,
     },
-    levelHeader: 'Guide to R.pick - ',
+    levelHeader: 'Guide to R.pick: ',
     guide: <span>
       You can use R.pick(<i>list of properties</i>, <i>object</i>) to get object property.
       <br /><br />
@@ -167,7 +167,7 @@ const levels ={
       "apples": true,
       "pears": true
     },
-    levelHeader: 'Guide to R.omit - ',
+    levelHeader: 'Guide to R.omit: ',
     guide: <span>
       You can use R.omit(<i>list of properties</i>, <i>object</i>) to get all properties of the object, omitting one you write.
       <br /><br />
@@ -197,7 +197,7 @@ const levels ={
       {color: 'yellow', name: 'Banana'},
       {color: 'green', name: 'Melon'}
     ],
-    levelHeader: 'Guide to R.append - ',
+    levelHeader: 'Guide to R.append: ',
     guide: <span>
       You can use R.append(<i>value</i>, <i>array</i>) to add element at the end of given array.
       <br /><br />
@@ -230,7 +230,7 @@ const levels ={
       {color: 'red', name: 'Strawberry'},
       {color: 'yellow', name: 'Banana'}
     ],
-    levelHeader: 'Guide to R.prepend - ',
+    levelHeader: 'Guide to R.prepend: ',
     guide: <span>
       You can use R.prepend(<i>value</i>, <i>array</i>) to add element at the start of given array.
       <br /><br />
@@ -260,7 +260,7 @@ const levels ={
     "resultOfLevel": [
       'pears', 'apples', 'melons'
     ],
-    levelHeader: 'Guide to R.take - ',
+    levelHeader: 'Guide to R.take: ',
     guide: <span>
       You can use R.take(<i>number</i>, <i>array / string</i>) to get first <i>n</i> elements of an array or string.
       <br /><br />
@@ -284,7 +284,7 @@ const levels ={
     "resultOfLevel": [
       'pears', 'plums', 'apples', 'melons'
     ],
-    levelHeader: 'Guide to R.takeWhile - ',
+    levelHeader: 'Guide to R.takeWhile: ',
     guide: <span>
       You can use R.takeWhile(<i>Predicate function</i>, <i>array / string</i>) to get all elements until predicate
       function returns false.
@@ -326,7 +326,7 @@ const levels ={
         }
       ]
     },
-    levelHeader: 'Guide to R.groupBy - ',
+    levelHeader: 'Guide to R.groupBy: ',
     guide: <span>
       Splits a list into sub-lists stored in an object, based on the result of calling a String-returning function on
       each element, and grouping the results according to values returned.
@@ -368,7 +368,7 @@ const levels ={
   },
   // Composing of functions
   11: {
-    "title": "Remove pears from the basket and changed apples to true",
+    "title": "Remove pears from the basket and change apples to true",
     "levelAssignment": {
       "apples": false,
       "pineapples": true,
@@ -393,7 +393,7 @@ const levels ={
             )(basket);
           </span>
       </div>,
-    levelHeader: 'Composing of the functions - ',
+    levelHeader: 'Composing of the functions: ',
     guide: <span>
       In Ramda.js, you can use R.compose(<i>fn1</i>, <i>fn2</i>, <i>fn3</i>...)(object) to make number of transformations
       on an object. Compose performs <i>right</i> to <i>left</i> function composition, opposed to R.pipe, that performs
@@ -426,7 +426,7 @@ const levels ={
     </span>,
   },
   "12": {
-    "title": "Remove pears from the basket and changed apples to true",
+    "title": "Remove pears from the basket and change apples to true",
     "levelAssignment": {
       "apples": false,
       "pineapples": true,
@@ -451,7 +451,7 @@ const levels ={
             )(basket);
           </span>
       </div>,
-    levelHeader: 'Composing of the functions through R.pipe - ',
+    levelHeader: 'Composing of the functions through R.pipe: ',
     guide: <span>
       In Ramda.js, you can use R.pipe(<i>fn1</i>, <i>fn2</i>, <i>fn3</i>...)(object) to make number of transformations
       on an object. Pipe performs <i>left</i> to <i>right</i> composition of functions, opposed to R.compose, that performs
@@ -481,6 +481,99 @@ const levels ={
         or
       </div>
       R.pick(['apples', 'pineapples']) with R.assoc('apples', true)
+    </span>,
+  },
+  "13": {
+    "title": "Add yellow lemons to the end of the basket, and then group them based on their color",
+    "levelAssignment": [
+      {color: 'red', name: 'Apples'},
+      {color: 'red', name: 'Strawberries'},
+      {color: 'yellow', name: 'Bananas'},
+    ],
+    "resultOfLevel": {
+      "red": [
+        {
+          "color": "red",
+          "name": "Apples"
+        },
+        {
+          "color": "red",
+          "name": "Strawberries"
+        }
+      ],
+      "yellow": [
+        {
+          "color": "yellow",
+          "name": "Bananas"
+        },
+        {
+          "color": "yellow",
+          "name": "Lemons"
+        }
+      ]
+    },
+    "name": "R.compose() - groupBy/append",
+    getUserInput: (complete, complete2) =>
+      <div>
+          <span>
+            R.compose(
+            <br />
+            <div className='margin-left__30'>
+              R.{complete}, <br />
+              R.{complete2}
+            </div>
+            <br />
+            )(basket);
+          </span>
+      </div>,
+    levelHeader: 'Guide to this level:',
+    guide: <span>
+      Use knowledge from levels on R.append and R.groupyBy to finish this level.
+    </span>,
+    solution: <span>
+      R.append({"{color: 'yellow', name: 'Lemons'}"}) with R.groupBy(R.prop('color'))
+    </span>,
+  },
+  "14": {
+    "title": "Add yellow lemons to the start of the basket, group them based on their color. Afterwards, remove all red fruits.",
+    "levelAssignment": [
+      {color: 'red', name: 'Apples'},
+      {color: 'red', name: 'Strawberries'},
+      {color: 'yellow', name: 'Bananas'},
+    ],
+    "resultOfLevel": {
+      "yellow": [
+        {
+          "color": "yellow",
+          "name": "Lemons"
+        },
+        {
+          "color": "yellow",
+          "name": "Bananas"
+        }
+      ]
+    },
+    "name": "R.compose() - groupBy/prepend/omit",
+    getUserInput: (complete, complete2, complete3) =>
+      <div>
+          <span>
+            R.compose(
+            <br />
+            <div className='margin-left__30'>
+              R.{complete}, <br />
+              R.{complete2}, <br />
+              R.{complete3}
+            </div>
+            <br />
+            )(basket);
+          </span>
+      </div>,
+    levelHeader: 'Guide to this level:',
+    guide: <span>
+      Use knowledge from levels on R.prepend, R.groupyBy and R.omit to finish this level.
+    </span>,
+    solution: <span>
+      R.prepend({"{color: 'yellow', name: 'Lemons'}"}) with R.groupBy(R.prop('color')) and R.omit('red')
     </span>,
   },
   // "102": {

@@ -105,6 +105,11 @@ pre {
   .paper-wrapper {
     min-height: 600px;
   }
+  .left-column,
+  .middle-column,
+  .right-column {
+    max-width: 33%;
+  }
 }
 
 
@@ -112,6 +117,7 @@ pre {
   .display-flex.main-wrapper {
     flex-direction: column;
   }
+
 }
 
 @media only screen and (min-width: 1481px) {
