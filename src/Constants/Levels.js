@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { prettify } from '../Helpers/index'
+
+// Main levels for ramda game, which contains guides. For practise levels, navigate to ./PractiseLevels.js
 const levels ={
   // Working with objects
   0: {

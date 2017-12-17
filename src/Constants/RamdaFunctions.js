@@ -1,3 +1,5 @@
+// Data structure to provide suggestions for autocompleting. Not all Ramda.js functions are included, so user is not
+// overwhelmed.
 export const ramdaFunctions = [
   'add()',
   'always()',

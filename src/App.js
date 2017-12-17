@@ -36,11 +36,13 @@ class App extends Component {
       open,
       isPractise,
     } = this.state
+    // Fn to provide clickable icon that opens practise level, in case there is practise level available.
     const rightIcon = (key) => !!practiseLevels[key] && <Cached title={'Practise this function!'} onClick={() => this.changeLevel(key, true)}/>
     return (
       <MuiThemeProvider>
         <div>
           <div>
+            {/* Left drawer menu */}
             <Drawer
               docked={false}
               width={320}

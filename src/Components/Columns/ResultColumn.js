@@ -24,15 +24,18 @@ class ResultColumn extends Component {
     try {
       functionList = searchTexts.map(text => getFunction({R, level: levelAssignment, searchText: text}))
     } catch (err) {}
+    // This is actually throwing error rather often, because user doesn't have to write correct function inside searchfield.
     try {
       currentAnswer = isPipe
         ? R.pipe(...functionList)(levelAssignment)
         : R.compose(...functionList)(levelAssignment)
     } catch (err) {
     }
+    // Check if user's answer is equal to correct level result.
     const isEqual = currentAnswer
       ? R.equals(currentAnswer, resultLevel)
       : false
+    // Tick and x mark for success / fail message.
     const correct = '\u2713'
     const failed = '\u2717'
     return (

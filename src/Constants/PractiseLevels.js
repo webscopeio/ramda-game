@@ -1,5 +1,7 @@
 import * as React from 'react'
 
+// Data structure containing practise levels. Practise level ID had to equal to equal to corresponding level ID
+// in Levels.js!
 const practiseLevels = {
   0: {
     "title": "Make sure pears are in the basket",

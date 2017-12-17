@@ -17,6 +17,7 @@ class UserInputColumn extends Component {
       onSolutionClickHandler,
       getUserInput,
     } = this.props
+    // Initialize inputs
     const autoComplete = searchTexts.map((text, index) => <AutoComplete
       onUpdateInput={(text) => handleUpdateInput(index, text)}
       hintText='Start typing function name'

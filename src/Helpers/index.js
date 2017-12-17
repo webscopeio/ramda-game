@@ -1,5 +1,9 @@
 import React from 'react';
 
+// Functions mainly for highlighting of objects and arrays.
+// Credit for these functions goes to https://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript
+// I haven't wrote them.
+
 function output(inp) {
   return <pre dangerouslySetInnerHTML={{__html: inp}} />
 }

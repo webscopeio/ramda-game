@@ -8,6 +8,7 @@ class Level extends Component {
   constructor (props) {
     super(props)
     let searchTexts = []
+    // Initiate searchtexts for selected level
     for (let i = 0; i < props.level.getUserInput.length; i++) {
       searchTexts.push('')
     }
@@ -30,6 +31,7 @@ class Level extends Component {
   componentWillReceiveProps (nextProps) {
     if (nextProps.id !== this.props.id) {
       let searchTexts = []
+      // Clear level inputs when level changes
       for (let i = 0; i < nextProps.level.getUserInput.length; i++) {
         searchTexts.push('')
       }
@@ -69,12 +71,14 @@ class Level extends Component {
     } = this.props
     return (
       <div className='display-flex main-wrapper'>
+        {/* Left column, containing level assignment and guide (if present) */}
         <LeftColumn
           levelAssignment={levelAssignment}
           guide={guide}
           title={title}
           levelHeader={levelHeader}
         />
+        {/* Middle column, where user input and solution is located */}
         <UserInputColumn
           searchTexts={searchTexts}
           handleUpdateInput={this.handleUpdateInput}
@@ -84,6 +88,7 @@ class Level extends Component {
           onSolutionClickHandler={this.onSolutionClickHandler}
           displaySolution={displaySolution}
         />
+        {/* Right column, where user can see his functions current output and where is also shown correct solution output */}
         <ResultColumn
           levelAssignment={levelAssignment}
           resultLevel={resultOfLevel}

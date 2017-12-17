@@ -25,6 +25,8 @@ class Home extends Component {
     const {
       isIntroduced,
     } = this.state
+    // Shows user introduction message when he enters the page
+    // It is wrapped in overdrive tag so it is easily animated
     return isIntroduced
       ? (
         <Overdrive id="welcome-screen-animation" duration={500}>
